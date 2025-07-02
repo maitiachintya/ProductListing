@@ -1,97 +1,97 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 10 47](https://github.com/user-attachments/assets/ad1fbdb4-183a-4917-9ed6-c6dc632e235c)### ✨ Splash Screen
 
-# Getting Started
+- Visually engaging splash screen with custom gradient background.
+- Centered logo branding (`Web Skitters Academy`) and tagline.
+- Automatically navigates to the next screen after a short delay.
+- Provides a professional introduction to the app.
+ ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 05 36](https://github.com/user-attachments/assets/b02898df-cdc7-4b08-953a-1a1942096df8)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+### 🔐 Login Screen
 
-## Step 1: Start Metro
+- Secure login form with email and password fields.
+- Password visibility toggle for user convenience.
+- Save Password checkbox to persist credentials.
+- Forgot Password link for recovery.
+- Navigation to registration for new users.
+- Gradient background matching the splash screen design.
+  ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 09 26](https://github.com/user-attachments/assets/bdd592e5-cf23-41f6-a189-0fc86bf92e5d)
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 📝 Create Account Screen
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Registration form for new users.
+- Profile picture selection.
+- Input validation on fields:
+  - Full Name
+  - Last Name
+  - Email Address
+  - Password and Confirm Password
+- Password visibility toggles for usability.
+- Terms & Conditions acceptance required.
+- Clear action buttons:
+  - Create Account
+  - Back to Login
+    ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 10 47](https://github.com/user-attachments/assets/3caac5ea-ed08-428a-9b68-c30d228613df)
 
-```sh
-# Using npm
-npm start
+### 🙍‍♂️ Profile Screen
 
-# OR using Yarn
-yarn start
-```
+- Shows user profile data:
+  - Avatar with online indicator
+  - Name and email
+  - Role and account type
+  - Status and registration date
+- Big logout button
+- Bottom navigation bar for quick access to:
+  - Home
+  - List
+  - Profile
+    ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 12 52](https://github.com/user-attachments/assets/e881d812-9418-4410-9fb9-82650c10b68e)
 
-## Step 2: Build and run your app
+### 📝 Create Product Screen
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- Enables users to create a new product with:
+  - Title
+  - Description
+  - Image upload
+- Clear and simple form layout.
+  ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 11 30](https://github.com/user-attachments/assets/85ce4738-6395-4c08-a2e6-fbc9ac914004)
 
-### Android
+### 📝 Product List Screen
 
-```sh
-# Using npm
-npm run android
+- Lists all created products in a grid.
+- Each card includes:
+  - Product image
+  - Title
+  - Short description
+  - Edit button
+- Search functionality to filter by product title.
+  ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 11 47](https://github.com/user-attachments/assets/e69d1b3d-46aa-498d-b9df-bc330e55af8d)
 
-# OR using Yarn
-yarn android
-```
+### ✏️ Update Product Screen
 
-### iOS
+- Modal overlay to edit an existing product.
+- Features:
+  - Preview and change product image.
+  - Update title and description.
+  - Submit changes.
+- Closes automatically on successful update.
+  ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 12 09](https://github.com/user-attachments/assets/eca0f811-99bb-4b45-9341-997176552c70)
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### 🔍 Product Search
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- Filters products in real-time by title.
+- Improves discoverability of entries in large lists.
+  ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 12 29](https://github.com/user-attachments/assets/18572815-7c58-4c62-91a1-72c7814596c0)
 
-```sh
-bundle install
-```
+### Product Details Screen
 
-Then, and every time you update your native dependencies, run:
+- Product Image – prominently shown at the top.
+- Title – Product1.
+- Status – indicates if the product is active (Status: Active).
+- Description – a short text describing the product (Good and clean useful).
+- Timestamps:
+    Created date & time.
+    Updated date & time.
+  ![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 12 41](https://github.com/user-attachments/assets/45311b09-47fd-4863-9432-ed60809ef9f9)
+  
 
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+    
