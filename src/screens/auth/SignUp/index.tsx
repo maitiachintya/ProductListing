@@ -13,20 +13,20 @@ import {
   Easing,
   Pressable,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
-import {styles} from './styles';
-import {Icons} from '../../../themes/Icons';
-import {Colors} from '../../../themes/Colors';
+import React, { useEffect, useRef, useState } from 'react';
+import { styles } from './styles';
+import { Icons } from '../../../themes/Icons';
+import { Colors } from '../../../themes/Colors';
 import TextInput from '../../../components/TextInput';
 import CheckBox from '../../../components/CheckBox';
-import {getImageFromGallery} from '../../../utils/helper/ImageController';
-import {useAppDispatch, useAppSelector} from '../../../redux/store/Store';
+import { getImageFromGallery } from '../../../utils/helper/ImageController';
+import { useAppDispatch, useAppSelector } from '../../../redux/store/Store';
 import showMessage from '../../../utils/helper/showMessage';
-import {signUpRequest} from '../../../redux/reducer/AuthReducer';
+import { signUpRequest } from '../../../redux/reducer/AuthReducer';
 import Loader from '../../../utils/helper/Loader';
-import {navigate} from '../../../navigators/RootNavigation';
-import {CustomStatusBar} from '../../../utils/helper/CustomStatusBar';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { navigate } from '../../../navigators/RootNavigation';
+import { CustomStatusBar } from '../../../utils/helper/CustomStatusBar';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const index = () => {
   const Touchable = Animated.createAnimatedComponent(Pressable);
@@ -39,13 +39,15 @@ const index = () => {
   const colorValueLogin = useRef(new Animated.Value(0)).current;
 
   const dispatch = useAppDispatch();
-  const {loading} = useAppSelector(state => state.auth);
+  const { loading } = useAppSelector(state => state.auth);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [isSequre, setIsSequre] = useState<boolean>(false);
+  const [isPasswordSequre, setIsPasswordSequre] = useState<boolean>(true);
+  const [isConfirmPasswordSequre, setIsConfirmPasswordSequre] =
+    useState<boolean>(true);
   const [showFocus, setShowFocus] = useState<string | null>(null);
   const [isTerms, setIsTerms] = useState<boolean>(false);
   const [imageUri, setImgaeUri] = useState<{
@@ -73,6 +75,10 @@ const index = () => {
 
     if (!password.trim()) {
       showMessage('Password is required');
+      return false;
+    }
+    if (!confirmPassword.trim()) {
+      showMessage('Confirm Password is required');
       return false;
     }
 
@@ -175,7 +181,7 @@ const index = () => {
   });
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <CustomStatusBar
         backgroundColor={'transparent'}
         barStyle={'light-content'}
@@ -184,24 +190,28 @@ const index = () => {
       <ImageBackground
         source={Icons.bgTheme}
         resizeMode="cover"
-        style={{...StyleSheet.absoluteFillObject}}>
+        style={{ ...StyleSheet.absoluteFillObject }}
+      >
         <Loader visible={loading} />
         <KeyboardAvoidingView
           style={styles.container}
-          behavior={Platform.OS == 'android' ? 'padding' : 'height'}>
+          behavior={Platform.OS == 'android' ? 'padding' : 'height'}
+        >
           <StatusBar backgroundColor={Colors.main} barStyle={'light-content'} />
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={styles.main}
-            contentContainerStyle={styles.contentContainerStyle}>
+            contentContainerStyle={styles.contentContainerStyle}
+          >
             <Animated.Text
               style={[
                 styles.title,
                 {
                   opacity: fadeAnim,
-                  transform: [{translateY: slideYAnim}, {scale: scaleAnim}],
+                  transform: [{ translateY: slideYAnim }, { scale: scaleAnim }],
                 },
-              ]}>
+              ]}
+            >
               Create Account
             </Animated.Text>
             <Animated.Text
@@ -209,9 +219,10 @@ const index = () => {
                 styles.subTitle,
                 {
                   opacity: fadeAnim,
-                  transform: [{translateY: slideYAnim}, {scale: scaleAnim}],
+                  transform: [{ translateY: slideYAnim }, { scale: scaleAnim }],
                 },
-              ]}>
+              ]}
+            >
               Lorem Ipsum, giving information on its origins, as well as a
               random Lipsum generator.
             </Animated.Text>
@@ -232,7 +243,8 @@ const index = () => {
                     }
                   },
                 });
-              }}>
+              }}
+            >
               <Image
                 source={{
                   uri: imageUri.uri,
@@ -257,7 +269,7 @@ const index = () => {
               onFocus={() => setShowFocus('name')}
               onBlur={() => setShowFocus(null)}
               focused={showFocus === 'name'}
-              icon={{uri: Icons.profile}}
+              icon={{ uri: Icons.profile }}
             />
 
             <TextInput
@@ -267,7 +279,7 @@ const index = () => {
               onFocus={() => setShowFocus('name')}
               onBlur={() => setShowFocus(null)}
               focused={showFocus === 'name'}
-              icon={{uri: Icons.profile}}
+              icon={{ uri: Icons.profile }}
             />
 
             <TextInput
@@ -277,42 +289,54 @@ const index = () => {
               onFocus={() => setShowFocus('email')}
               onBlur={() => setShowFocus(null)}
               focused={showFocus === 'email'}
-              icon={{uri: Icons.email}}
+              icon={{ uri: Icons.email }}
             />
 
             <TextInput
               value={password}
               onChangeText={v => setPassword(v)}
               placeholder="Password"
-              icon={isSequre ? {uri: Icons.invisible} : {uri: Icons.visible}}
+              icon={
+                isPasswordSequre
+                  ? { uri: Icons.invisible }
+                  : { uri: Icons.visible }
+              }
               disable={false}
               onFocus={() => setShowFocus('password')}
               onBlur={() => setShowFocus(null)}
               focused={showFocus === 'password'}
-              onPress={() => setIsSequre(!isSequre)}
-              secureTextEntry={isSequre}
+              onPress={() => setIsPasswordSequre(!isPasswordSequre)}
+              secureTextEntry={isPasswordSequre}
             />
 
             <TextInput
               value={confirmPassword}
               onChangeText={v => setConfirmPassword(v)}
               placeholder="Confirm Password"
-              icon={isSequre ? {uri: Icons.invisible} : {uri: Icons.visible}}
+              icon={
+                isConfirmPasswordSequre
+                  ? { uri: Icons.invisible }
+                  : { uri: Icons.visible }
+              }
               disable={false}
               onFocus={() => setShowFocus('confirmPassword')}
               onBlur={() => setShowFocus(null)}
               focused={showFocus === 'confirmPassword'}
-              onPress={() => setIsSequre(!isSequre)}
-              secureTextEntry={isSequre}
+              onPress={() =>
+                setIsConfirmPasswordSequre(!isConfirmPasswordSequre)
+              }
+              secureTextEntry={isConfirmPasswordSequre}
             />
 
             <View style={styles.v1}>
               <CheckBox
-                box={isTerms ? {uri: Icons.showCheck} : {uri: Icons.emptyCheck}}
+                box={
+                  isTerms ? { uri: Icons.showCheck } : { uri: Icons.emptyCheck }
+                }
                 disable={false}
                 onPress={() => setIsTerms(!isTerms)}
               />
-              <Text style={[styles.text, {marginLeft: 8}]}>
+              <Text style={[styles.text, { marginLeft: 8 }]}>
                 Agree with Terms & Conditions
               </Text>
             </View>
@@ -324,8 +348,9 @@ const index = () => {
               onPressOut={() => changeColor(0)}
               style={[
                 styles.fullWidthButton,
-                {backgroundColor, transform: [{scale}]},
-              ]}>
+                { backgroundColor, transform: [{ scale }] },
+              ]}
+            >
               <Text style={styles.btnText}>Create Account</Text>
             </Touchable>
             <Touchable
@@ -336,9 +361,10 @@ const index = () => {
                 styles.navigateButton,
                 {
                   backgroundColor: backgroundColorLogin,
-                  transform: [{scale: scaleLogin}],
+                  transform: [{ scale: scaleLogin }],
                 },
-              ]}>
+              ]}
+            >
               <Text style={styles.btnText}>Back to Login</Text>
             </Touchable>
           </ScrollView>
