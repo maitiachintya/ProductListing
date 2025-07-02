@@ -79,7 +79,9 @@ View detailed information about each product.
 
 📞 Contact
 Achintya Maiti
+
 https://www.linkedin.com/in/achintya-maiti-reactfrontend/
+
 Email
 achintyamaiti20@gmail.com
 
