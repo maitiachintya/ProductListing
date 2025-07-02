@@ -1,4 +1,4 @@
-![Simulator Screenshot - iPhone 16 Pro - 2025-07-02 at 12 10 47](https://github.com/user-attachments/assets/ad1fbdb4-183a-4917-9ed6-c6dc632e235c)### ✨ Splash Screen
+### ✨ Splash Screen
 
 - Visually engaging splash screen with custom gradient background.
 - Centered logo branding (`Web Skitters Academy`) and tagline.
